@@ -22,4 +22,6 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: shortencraftsapi_production
+  username: shortencraftsapi
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
