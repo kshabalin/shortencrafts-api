@@ -11,7 +11,7 @@ class RedirectHandler < ApplicationService
     if link.nil?
       default_redirect
     else
-      create_click link
+      create_click(link)
       link.url
     end
   end
