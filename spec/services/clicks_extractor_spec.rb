@@ -83,6 +83,11 @@ RSpec.describe ClicksExtractor, type: :service do
         expect(clicks[:clicks]).to have(5).items
         expect(clicks[:total]).to eq(5)
       end
+      it 'should return 5 clicks' do
+        clicks = ClicksExtractor.call({ country: 'rus' }, user)
+        expect(clicks[:clicks]).to have(5).items
+        expect(clicks[:total]).to eq(5)
+      end
     end
 
     context 'with params[:from]' do
