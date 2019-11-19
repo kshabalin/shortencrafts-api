@@ -4,8 +4,6 @@ class Extractor < ApplicationService
     @user = user
   end
 
-  def call; end
-
   private
 
   def total; end
