@@ -2,9 +2,8 @@ class ClicksExtractor < Extractor
 
   def call
     clicks = clicks_by_country
-
-    clicks = clicks.where('clicks.occurred_at >= ?', @params[:from]) if @params[:from].present?
-    clicks = clicks.where('clicks.occurred_at <= ?', @params[:to]) if @params[:to].present?
+    clicks = from_date(clicks)
+    clicks = to_date(clicks)
 
     { total: total(clicks), clicks: paginated(clicks) }
   end
@@ -13,6 +12,14 @@ class ClicksExtractor < Extractor
 
   def total(clicks)
     clicks.joins(:link).where(links: { user_id: @user.id }).length
+  end
+
+  def from_date(clicks)
+    @params[:from].present? ? clicks.from_occurred_at(@params[:from]) : clicks
+  end
+
+  def to_date(clicks)
+    @params[:to].present? ? clicks.to_occurred_at(@params[:to]) : clicks
   end
 
   def paginated(clicks)

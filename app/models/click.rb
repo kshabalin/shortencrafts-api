@@ -5,4 +5,6 @@ class Click < ApplicationRecord
 
   scope :default, -> { where.not(country: nil) }
   scope :by_country, ->(country) { where('country ILIKE ?', country) }
+  scope :from_occurred_at, ->(date) { where('clicks.occurred_at >= ?', date) }
+  scope :to_occurred_at, ->(date) { where('clicks.occurred_at <= ?', date) }
 end
