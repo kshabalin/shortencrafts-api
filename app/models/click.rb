@@ -4,5 +4,5 @@ class Click < ApplicationRecord
   validates :country_code, :country, presence: true
 
   scope :default, -> { where.not(country: nil) }
-  scope :by_country, ->(country) { where('country like ?', country) }
+  scope :by_country, ->(country) { where('country ILIKE ?', country) }
 end

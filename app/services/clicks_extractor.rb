@@ -23,7 +23,7 @@ class ClicksExtractor < Extractor
 
   def clicks_by_country
     if @params[:country].present?
-      Click.by_country('%'.concat(@params[:country].capitalize.concat('%')))
+      Click.by_country('%'.concat(@params[:country].concat('%')))
     else
       Click.default
     end
