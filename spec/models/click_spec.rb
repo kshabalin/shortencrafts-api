@@ -16,13 +16,13 @@ RSpec.describe Click, type: :model do
       expect(click).to be_valid
     end
 
-    it 'is not valid without a username' do
+    it 'is not valid without a country' do
       click_params[:country] = nil
       click = link.clicks.new(click_params)
       expect(click).to_not be_valid
     end
 
-    it 'is not valid without a email' do
+    it 'is not valid without a country code' do
       click_params[:country_code] = nil
       click = link.clicks.new(click_params)
       expect(click).to_not be_valid
