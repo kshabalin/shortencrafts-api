@@ -12,8 +12,7 @@ class LinkCreator < ApplicationService
   private
 
   def find_by_hash(hash)
-    links = Link.find_by_url_hash(hash)
-    links.present? ? links[0] : nil
+    Link.find_by_url_hash(hash)
   end
 
   def create
